@@ -1,0 +1,15 @@
+# Gradle 生成ファイル（下層の全プロジェクトに適用）
+.gradle/
+**/build/
+
+# IDE 関連ファイル
+.idea/
+*.iml
+**/out/
+
+# ローカル環境依存ファイル（SDKパスなど）
+local.properties
+
+# OS固有ファイル
+.DS_Store
+Thumbs.db
