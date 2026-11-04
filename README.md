@@ -45,6 +45,7 @@ projects/
 ├── HappyBirthday/   Unit 1 Pathway 3
 ├── DiceRoller/       Unit 2 Pathway 2
 ├── Lemonade/         Lemonade Codelab
+├── KotlinBasics/     Kotlin 言語の基礎教材（素の Kotlin / JVM，Android 不要）
 └── XRtest/           Canvas を使った3D表現の単発検証（コース外）
 ```
 
@@ -59,6 +60,7 @@ projects/
 | [HappyBirthday](projects/HappyBirthday) | 誕生日カード表示アプリ | [Android Basics Compose Unit 1 Pathway 3](https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-3?hl=ja) |
 | [DiceRoller](projects/DiceRoller) | サイコロを振るアプリ | [Android Basics Compose Unit 2 Pathway 2](https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-2?authuser=2) |
 | [Lemonade](projects/Lemonade) | レモネードを作るミニゲーム | [Lemonade Codelab](https://developer.android.com/codelabs/basic-android-kotlin-training-project-lemonade?hl=ja&authuser=2#0) |
+| [KotlinBasics](projects/KotlinBasics) | Kotlin 言語の基礎（変数・型・null 安全など）を解説と演習で学ぶ | 自作教材 |
 | [XRtest](projects/XRtest) | Canvasによる3D表現の単発検証 | - |
 
 <p align="right">(<a href="#top">トップへ戻る</a>)</p>
@@ -75,6 +77,6 @@ Android Studio の `File > Open` から，`projects/` 配下の対象フォル�
 
 ## 今後の予定
 
-[Android Basics with Compose](https://developer.android.com/courses/android-basics-compose/course?authuser=2&hl=ja) コースを引き続き受講し，ユニットごとに新しいプロジェクトを `projects/` 以下に追加していく．
+学習の順序と計画は [ROADMAP.md](ROADMAP.md) にまとめている．Kotlin の基礎（自作教材）から始め，既存の 3 アプリの再学習，[Android Basics with Compose](https://developer.android.com/courses/android-basics-compose/course?authuser=2&hl=ja) の選択受講を経て，Android XR の Codelab に進む．新しい教材やプロジェクトは，その都度 `projects/` 以下に追加していく．
 
 <p align="right">(<a href="#top">トップへ戻る</a>)</p>
