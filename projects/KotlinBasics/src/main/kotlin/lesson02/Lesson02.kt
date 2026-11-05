@@ -105,11 +105,12 @@ private fun ifExpression() {
 //
 // Lemonade の when (currentStep) { 1 -> ...; 2 -> ... } と同じ仕組み。
 // ---------------------------------------------------------------------
-private fun dayType(day: Int): String = when (day) {
-    1, 7 -> "休日"          // 複数の値は , でつなぐ
-    in 2..6 -> "平日"       // 範囲は in
-    else -> "不正な値"
-}
+private fun dayType(day: Int): String =
+    when (day) {
+        1, 7 -> "休日"          // 複数の値は , でつなぐ
+        in 2..6 -> "平日"       // 範囲は in
+        else -> "不正な値"
+    }
 
 // 対象を取らない when: if-else if の連鎖をすっきり書ける
 private fun classify(n: Int): String = when {
