@@ -34,7 +34,7 @@ Kotlin Basics は，Web 開発（HTML / CSS / JavaScript）の経験を土台に
 | 2 | 関数・条件式 | 関数，デフォルト引数，名前付き引数，式としての `if` / `when`，範囲と `for` | 完了 |
 | 3 | クラスとデータ | `class`，コンストラクタ，`data class`，`enum`，`interface`，`object` | 完了 |
 | 4 | コレクションとラムダ | `List` / `Map`，`map` / `filter`，ラムダ式，関数型，末尾ラムダ | 完了 |
-| 5 | Compose への橋渡し | 名前付き引数・デフォルト引数・末尾ラムダで，`Column { Text("...") }` 風の書き方を素の Kotlin で自作する | 未着手 |
+| 5 | Compose への橋渡し | 名前付き引数・デフォルト引数・末尾ラムダで，`Column { Text("...") }` 風の書き方を素の Kotlin で自作する | 演習待ち |
 | 6 | 拡張関数・スコープ関数・ジェネリクス | 拡張関数，`let` / `apply`，ジェネリクス（公式コース Unit 3 の Kotlin 部分に相当．必要になる直前に追加） | 後日 |
 | 7 | コルーチン入門 | `suspend`，`launch`，`async`（JS の `async/await` との対比．XR Codelab Part 2 の前に追加） | 後日 |
 
@@ -63,10 +63,15 @@ KotlinBasics/
     │   ├── Lesson03.kt
     │   └── exercise/
     │       └── Exercise03.kt
-    └── lesson04/
-        ├── Lesson04.kt
+    ├── lesson04/
+    │   ├── Lesson04.kt
+    │   └── exercise/
+    │       └── Exercise04.kt
+    └── lesson05/
+        ├── MiniUi.kt              Compose 風の小さな UI ライブラリ（先に読む）
+        ├── Lesson05.kt
         └── exercise/
-            └── Exercise04.kt
+            └── Exercise05.kt
 ```
 
 レッスンごとにパッケージ（`lesson01`，`lesson02`，…）を分けている．同じパッケージに `main` を 2 つ置くことはできないためである．
