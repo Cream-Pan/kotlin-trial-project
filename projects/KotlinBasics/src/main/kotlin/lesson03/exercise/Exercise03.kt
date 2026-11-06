@@ -26,10 +26,10 @@ package lesson03.exercise
 // ヒント: isSquare は「関数」ではなく「プロパティ」。呼ぶときに ( ) が付かない。
 // ---------------------------------------------------------------------
 class Rectangle(val width: Int, val height: Int) {
-    fun area(): Int = TODO("幅 × 高さ")
+    fun area(): Int = width * height
 
     val isSquare: Boolean
-        get() = TODO("幅と高さが等しいか")
+        get() = width == height
 }
 // 試してみよう: Rectangle(3, 4).width = 10 と書くとどうなる？（val の理由を確かめる）
 
@@ -46,15 +46,16 @@ class Counter {
         private set
 
     fun increment() {
-        TODO("count を 1 増やす")
+        count++
     }
 
     fun decrement() {
-        TODO("count を 1 減らす。ただし 0 未満にしない")
+        if(count != 0)
+            count--
     }
 
     fun reset() {
-        TODO("count を 0 に戻す")
+        count = 0
     }
 }
 // 試してみよう: Counter().count = 5 と書くとどうなる？（private set の理由を確かめる）
@@ -70,13 +71,9 @@ class Counter {
 // ---------------------------------------------------------------------
 data class Item(val name: String, val price: Int, val quantity: Int = 1)
 
-fun total(item: Item): Int {
-    TODO("値段 × 個数")
-}
+fun total(item: Item): Int? = if(item.price >= 0 && item.quantity >= 0) item.price * item.quantity else null
 
-fun doubled(item: Item): Item {
-    TODO("copy で個数だけを変える")
-}
+fun doubled(item: Item): Item = item.copy(quantity = item.quantity * 2)
 // 試してみよう: val item = Item("pen", 50); item.quantity = 3 と書くとどうなる？
 
 // ---------------------------------------------------------------------
@@ -98,13 +95,22 @@ enum class Direction(val dx: Int, val dy: Int) {
 
 data class Point(val x: Int, val y: Int)
 
-fun turnRight(d: Direction): Direction {
-    TODO("when (d) で 4 つの場合を全部書く")
-}
+fun turnRight(d: Direction): Direction =
+    when(d){
+        Direction.UP -> Direction.RIGHT
+        Direction.RIGHT -> Direction.DOWN
+        Direction.DOWN -> Direction.LEFT
+        Direction.LEFT -> Direction.UP
+    }
 
-fun move(p: Point, d: Direction): Point {
-    TODO("d.dx と d.dy を足した新しい Point")
-}
+fun move(p: Point, d: Direction): Point = Point(p.x + d.dx, p.y + d.dy)
+
+//fun move(p: Point, d: Direction): Point {
+//    turnRight(d)
+//    val newX = d.dx
+//    val newY = d.dy
+//    return Point(p.x + newX, p.y + newY)
+//}
 // 試してみよう: turnRight の when から DOWN の行を 1 つ消すとどうなる？
 
 // ---------------------------------------------------------------------
@@ -122,16 +128,14 @@ interface Shape {
 }
 
 class Square(val side: Double) : Shape {
-    override fun area(): Double = TODO("side × side")
+    override fun area(): Double = side * side
 }
 
 class Circle(val radius: Double) : Shape {
-    override fun area(): Double = TODO("3.14 × radius × radius")
+    override fun area(): Double = 3.14 * radius * radius
 }
 
-fun totalArea(a: Shape, b: Shape): Double {
-    TODO("2 つの面積を足す")
-}
+fun totalArea(a: Shape, b: Shape): Double = a.area() + b.area()
 
 // ---------------------------------------------------------------------
 // ここから下は採点用。
@@ -188,8 +192,9 @@ fun main() {
     check("問5 totalArea", 13.0) { totalArea(Square(2.0), Square(3.0)) }
 
     // ↓ ここに、自分で考えたテストケースを 2 つ以上足す
-
-
+    check("問6 total(pen, -1)", null) { total(Item("pen", -1)) }
+    check("問6 move(Point(-1, -1), UP)", Point(-1, -2)) { move(Point(-1, -1), Direction.UP) }
+    check("問6 totalArea", 21.56) { "%.2f".format(totalArea(Circle(2.0), Square(3.0))).toDouble() }
 }
 
 private fun check(label: String, expected: Any?, actual: () -> Any?) {

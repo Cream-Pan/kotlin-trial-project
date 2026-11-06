@@ -32,7 +32,7 @@ Kotlin Basics は，Web 開発（HTML / CSS / JavaScript）の経験を土台に
 |---|---|---|---|
 | 1 | 変数・型・null 安全 | `val` / `var`，Int と Double の違い，文字列テンプレート，`?.` `?:` | 完了 |
 | 2 | 関数・条件式 | 関数，デフォルト引数，名前付き引数，式としての `if` / `when`，範囲と `for` | 完了 |
-| 3 | クラスとデータ | `class`，コンストラクタ，`data class`，`enum`，`interface`，`object` | 演習待ち |
+| 3 | クラスとデータ | `class`，コンストラクタ，`data class`，`enum`，`interface`，`object` | 完了 |
 | 4 | コレクションとラムダ | `List` / `Map`，`map` / `filter`，ラムダ式，関数型，末尾ラムダ | 未着手 |
 | 5 | Compose への橋渡し | 名前付き引数・デフォルト引数・末尾ラムダで，`Column { Text("...") }` 風の書き方を素の Kotlin で自作する | 未着手 |
 | 6 | 拡張関数・スコープ関数・ジェネリクス | 拡張関数，`let` / `apply`，ジェネリクス（公式コース Unit 3 の Kotlin 部分に相当．必要になる直前に追加） | 後日 |
