@@ -21,9 +21,8 @@ package lesson04.exercise
 // 例: doubleEvens(listOf(1, 2, 3, 4)) → [4, 8] / doubleEvens(listOf(1, 3)) → []
 // ヒント: filter { ... } のあとに map { ... } をつなげる。
 // ---------------------------------------------------------------------
-fun doubleEvens(numbers: List<Int>): List<Int> {
-    TODO("filter と map をつなげる")
-}
+fun doubleEvens(numbers: List<Int>): List<Int> = numbers.filter { it % 2 == 0 }.map { it * 2 }
+
 // 試してみよう: listOf(1, 2, 3).add(4) と書くとどうなる？
 
 // ---------------------------------------------------------------------
@@ -34,7 +33,11 @@ fun doubleEvens(numbers: List<Int>): List<Int> {
 //         map[word] は、まだ無いと null。レッスン 1 の ?: が使える。
 // ---------------------------------------------------------------------
 fun wordCount(words: List<String>): Map<String, Int> {
-    TODO("mutableMapOf と ?: を使う")
+    val ans = mutableMapOf<String, Int>()
+    for (w in words) {
+        ans[w] = (ans[w]?:0) + 1
+    }
+    return ans
 }
 // 試してみよう: val m = mapOf("a" to 1); println(m["b"] + 1) と書くとどうなる？
 
@@ -47,9 +50,7 @@ fun wordCount(words: List<String>): Map<String, Int> {
 // ---------------------------------------------------------------------
 data class Product(val name: String, val price: Int, val category: String)
 
-fun totalPrice(products: List<Product>, category: String): Int {
-    TODO("filter と sumOf をつなげる")
-}
+fun totalPrice(products: List<Product>, category: String): Int = products.filter { it.category == category }.sumOf { it.price }
 
 // ---------------------------------------------------------------------
 // 問 4: 関数を引数にする関数（高階関数）
@@ -60,7 +61,11 @@ fun totalPrice(products: List<Product>, category: String): Int {
 //         呼び出し側は、すでに main に末尾ラムダの形で書いてある。
 // ---------------------------------------------------------------------
 fun applyN(x: Int, times: Int, f: (Int) -> Int): Int {
-    TODO("repeat を使って f を times 回適用する")
+    var result = x
+    repeat(times) {
+        result = f(result)
+    }
+    return result
 }
 // 試してみよう: main の applyN(1, 3) { it * 2 } を applyN(1, 3, it * 2) に書き換えるとどうなる？
 
@@ -72,9 +77,7 @@ fun applyN(x: Int, times: Int, f: (Int) -> Int): Int {
 //     n が商品数より大きければ、全部を安い順に返す。n が 0 なら空のリスト。
 // ヒント: sortedBy { ... } → take(n) → map { ... }
 // ---------------------------------------------------------------------
-fun cheapestNames(products: List<Product>, n: Int): List<String> {
-    TODO("sortedBy, take, map をつなげる")
-}
+fun cheapestNames(products: List<Product>, n: Int): List<String> = products.sortedBy { it.price }.take(n).map { it.name }
 
 // ---------------------------------------------------------------------
 // 問 6（発展）: 関数を Map に入れる
@@ -91,7 +94,15 @@ fun cheapestNames(products: List<Product>, n: Int): List<String> {
 //   operations[op] は無ければ null。関数が見つかったら operations[op]?.invoke(a, b) で呼べる。
 // ---------------------------------------------------------------------
 fun calc(op: String, a: Int, b: Int): Int? {
-    TODO("関数を入れた Map を使う")
+    if (op == "/" && b == 0) return null
+
+    val ope = mapOf<String, (Int, Int) -> Int> (
+        "+" to { a, b -> a + b },
+        "-" to { a, b -> a - b },
+        "*" to { a, b -> a * b },
+        "/" to { a, b -> a / b }
+    )
+    return ope[op]?.invoke(a, b)
 }
 
 // ---------------------------------------------------------------------
@@ -133,8 +144,8 @@ fun main() {
     check("問6 calc(/ を 0 で)", null) { calc("/", 1, 0) }
 
     // ↓ ここに、自分で考えたテストケースを 2 つ以上足す
-
-
+    check("問7 wordCount([a,0,0])", mapOf("a" to 1, "0" to 2)) { wordCount(listOf("a", "0", "0")) }
+    check("問７ calc(*)", 0) { calc("*", 20000, 0) }
 }
 
 private fun check(label: String, expected: Any?, actual: () -> Any?) {

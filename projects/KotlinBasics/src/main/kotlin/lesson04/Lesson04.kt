@@ -198,7 +198,7 @@ private fun collectionOperations() {
     println(prices.firstOrNull { it < 60 })        // 50
     println(prices.firstOrNull { it > 1000 })      // null
     println(prices.take(2))                        // [120, 80]
-    println(prices.joinToString(", "))             // 120, 80, 200, 50
+    println(prices.joinToString(", "))      // 120, 80, 200, 50
 
     val products = listOf(
         Product("pen", 120, "stationery"),
