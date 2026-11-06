@@ -105,12 +105,6 @@ fun turnRight(d: Direction): Direction =
 
 fun move(p: Point, d: Direction): Point = Point(p.x + d.dx, p.y + d.dy)
 
-//fun move(p: Point, d: Direction): Point {
-//    turnRight(d)
-//    val newX = d.dx
-//    val newY = d.dy
-//    return Point(p.x + newX, p.y + newY)
-//}
 // 試してみよう: turnRight の when から DOWN の行を 1 つ消すとどうなる？
 
 // ---------------------------------------------------------------------
